@@ -1,6 +1,7 @@
 package com.example.pokedex;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,33 +44,30 @@ public class PokedexMain extends AppCompatActivity {
         submitButton  = findViewById(R.id.submitButton);
         resetButton = findViewById(R.id.resetButton);
 
-        String nationalNumberInputString = nationalNumberInput.getText().toString();
-        String nameInputString = nameInput.getText().toString();
-        String speciesInputString = speciesInput.getText().toString();
-        String heightInputString = heightInput.getText().toString();
-        String weightInputString = weightInput.getText().toString();
-        String hpInputString = HPInput.getText().toString();
-        String attackInputString = attackInput.getText().toString();
-        String defenseInputString = defenseInput.getText().toString();
+
 
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int number = Integer.parseInt(nationalNumberInput.getText().toString());
-                String name = nameInput.getText().toString();
-                String species = speciesInput.getText().toString();
-                double height = Double.parseDouble(heightInput.getText().toString());
-                double weight = Double.parseDouble(weightInput.getText().toString());
-                //int level = Integer.parseInt(levelSpinner.getSelectedItem().toString());
-                int hp = Integer.parseInt(HPInput.getText().toString());
-                int attack = Integer.parseInt(attackInput.getText().toString());
-                int defense = Integer.parseInt(defenseInput.getText().toString());
+                String nationalNumberInputString = nationalNumberInput.getText().toString();
+                String nameInputString = nameInput.getText().toString();
+                String speciesInputString = speciesInput.getText().toString();
+                String heightInputString = heightInput.getText().toString();
+                String weightInputString = weightInput.getText().toString();
+                String hpInputString = HPInput.getText().toString();
+                String attackInputString = attackInput.getText().toString();
+                String defenseInputString = defenseInput.getText().toString();
 
-                // rn the submit button is crashing my app
+                Log.i("LAUREN", nationalNumberInputString);
 
-                Toast.makeText(v.getContext(), number, Toast.LENGTH_SHORT);
-                // when you put a toast inside onClick your context has to be the views context.. not this
+
+                // check if empty
+                if (nationalNumberInputString nameInputString, speciesInputString, heightInputString, weightInputString,
+                hpInputString, attackInputString, defenseInputString != ""){
+
+                }
+
             }
         }); // end submit on Click listener
 
@@ -111,3 +109,16 @@ public class PokedexMain extends AppCompatActivity {
 
 
 } // end class
+
+
+//
+//old
+//int number = Integer.parseInt(nationalNumberInput.getText().toString());
+//                String name = nameInput.getText().toString();
+//                String species = speciesInput.getText().toString();
+//                double height = Double.parseDouble(heightInput.getText().toString());
+//                double weight = Double.parseDouble(weightInput.getText().toString());
+//                //int level = Integer.parseInt(levelSpinner.getSelectedItem().toString());
+//                int hp = Integer.parseInt(HPInput.getText().toString());
+//                int attack = Integer.parseInt(attackInput.getText().toString());
+//                int defense = Integer.parseInt(defenseInput.getText().toString());
