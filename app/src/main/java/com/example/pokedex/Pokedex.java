@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class Pokedex {
 
-         int number;
+         int nationalNumber;
          String name;
          String species;
          String gender;
@@ -16,10 +16,10 @@ public class Pokedex {
          int defense;
 
 
-    public Pokedex(int number, String name, String species,
+    public Pokedex(int nationalNumber, String name, String species,
                    String gender, double height, double weight,
                    LinkedList<Integer> level, int hp, int attack, int defense) {
-        this.number = number;
+        this.nationalNumber = nationalNumber;
         this.name = name;
         this.species = species;
         this.gender = gender;
@@ -34,7 +34,7 @@ public class Pokedex {
 } // end constructor
 
     public Pokedex (){
-         number = 896;
+         nationalNumber = 896;
          name = "Glastrier";
          species = "Wild Horse Pokemon";
          gender = "Other";
@@ -49,11 +49,11 @@ public class Pokedex {
 
 
     public int getNumber() {
-        return number;
+        return nationalNumber;
     }
 
     public void setNumber(int number) {
-        this.number = number;
+        this.nationalNumber = number;
     }
 
 

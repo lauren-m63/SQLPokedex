@@ -25,7 +25,7 @@ public class PokedexMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.table); // Make sure res/layout/layout.xml exists
+        setContentView(R.layout.linear_layout); // Make sure res/layout/layout.xml exists
 
         numberInput = findViewById(R.id.nationalNumberInput);
         nameInput = findViewById(R.id.nameInput);
