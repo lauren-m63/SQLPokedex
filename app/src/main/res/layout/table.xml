@@ -4,6 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<!--    i am using table layout for all the buttons and each row is table row-->
+<!--    then im also using linear layouts and constraint layouts within -->
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -80,6 +83,44 @@
         <!--row 4 gender-->
         <TableRow
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female" />
+
+                <RadioButton
+                    android:id="@+id/radioMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male" />
+
+                <RadioButton
+                    android:id="@+id/radioOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Other" />
+            </LinearLayout>
+        </TableRow>
+
+        <!--row 5 height -->
+        <TableRow
+            android:layout_width="match_parent"
             android:layout_height="30dp">
 
             <TextView
@@ -88,36 +129,84 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="20dp"
                 android:padding="4dp"
-                android:text="Gender" />
+                android:text="Height" />
 
-            <RadioButton
-                android:id="@+id/radioFemale"
-                android:layout_width="109dp"
-                android:layout_height="24dp"
-                android:text="Female" />
-
-            <RadioButton
-                android:id="@+id/radioMale"
-
-                android:layout_height="wrap_content"
-                android:text="Male" />
-
-            <RadioButton
-                android:id="@+id/radioOther"
+            <EditText
+                android:id="@+id/heightInput"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Other" />
+                android:ems="10"
+                android:inputType="text"
+                android:text="" />
 
+        </TableRow>
 
+        <!--row 6 weight-->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
 
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:padding="4dp"
+                android:text="Weight" />
 
+            <EditText
+                android:id="@+id/weightInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:text="" />
 
+        </TableRow>
 
+        <!--row 7 Level-->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:padding="4dp"
+                android:text="Level" />
+
+            <Spinner
+
+                />
+
+        </TableRow>
+
+        <!--row 8 base stats-->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:padding="4dp"
+                android:text="Base Stats"
+                android:textSize="25dp"/>
         </TableRow>
 
 
 
+
+
+
+
+
     </TableLayout>
+<!--    end overall table-->
 
 
 </LinearLayout>
