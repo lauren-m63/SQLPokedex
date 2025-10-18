@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -65,6 +66,10 @@ public class PokedexMain extends AppCompatActivity {
                 int attack = Integer.parseInt(attackInput.getText().toString());
                 int defense = Integer.parseInt(defenseInput.getText().toString());
 
+                // rn the submit button is crashing my app
+
+                Toast.makeText(v.getContext(), number, Toast.LENGTH_SHORT);
+                // when you put a toast inside onClick your context has to be the views context.. not this
             }
         }); // end submit on Click listener
 
@@ -83,9 +88,19 @@ public class PokedexMain extends AppCompatActivity {
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nationalNumberInput.setText("");
+                nationalNumberInput.setText("896");
+                nameInput.setText("Glastrier");
+                speciesInput.setText("Wild Horse Pokemon");
+                // gender input
+                heightInput.setText("2.2");
+                weightInput.setText("800.0");
+                //level input
+                HPInput.setText("0");
+                attackInput.setText("0");
+                defenseInput.setText("0");
+
             }
-        });
+        });  // end on click listener
 
 
 
