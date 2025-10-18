@@ -14,4 +14,5 @@
     <string name="gender">Gender</string>
     <string name="national_number">National Number</string>
     <string name="species">Species</string>
+    <string name="pokemon_app">Pokemon App</string>
 </resources>

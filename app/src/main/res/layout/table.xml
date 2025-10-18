@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -7,9 +9,47 @@
 <!--    i am using table layout for all the buttons and each row is table row-->
 <!--    then im also using linear layouts and constraint layouts within -->
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:paddingTop="10dp"
+            android:text="@string/pokemon_app"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="10dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp"
+                android:text="Pokemon App"
+                android:textAlignment="center" />
+
+
+        </TableRow>
+
+
+
 
         <!--row 1-->
         <TableRow
@@ -199,8 +239,100 @@
         </TableRow>
 
 
+        <!--row 9 hp -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:padding="4dp"
+                android:text="HP" />
+
+            <EditText
+                android:id="@+id/HPInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:text="" />
+
+        </TableRow>
 
 
+        <!--row 10 attack-->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:padding="4dp"
+                android:text="Attack" />
+
+            <EditText
+                android:id="@+id/attackInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:text="" />
+
+        </TableRow>
+
+
+        <!--row 11 defense-->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:padding="4dp"
+                android:text="Defense" />
+
+            <EditText
+                android:id="@+id/defenseInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:text="" />
+
+        </TableRow>
+
+
+        <!--row 12 buttons-->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <Button
+                android:id="@+id/submitButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/submit"
+                />
+            <Button
+                android:id="@+id/resetButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset"
+                />
+            
+
+        </TableRow>
+        
+        
 
 
 
