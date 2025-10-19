@@ -24,6 +24,7 @@ public class PokedexMain extends AppCompatActivity {
     EditText defenseInput;
     Button submitButton;
     Button resetButton;
+    Pokedex pokedex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,22 +52,45 @@ public class PokedexMain extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String nationalNumberInputString = nationalNumberInput.getText().toString();
+
+                int nationalNumberInputInt= Integer.parseInt(nationalNumberInputString);
+
                 String nameInputString = nameInput.getText().toString();
                 String speciesInputString = speciesInput.getText().toString();
                 String heightInputString = heightInput.getText().toString();
+                if (!heightInputString.isEmpty()) {
+                    double heightInputDouble = Double.parseDouble(heightInputString);
+                }
+
                 String weightInputString = weightInput.getText().toString();
+                if (!weightInputString.isEmpty()) {
+                    double weightInputDouble = Double.parseDouble(weightInputString);
+                }
+
                 String hpInputString = HPInput.getText().toString();
+                int hpInputInt= Integer.parseInt(hpInputString);
                 String attackInputString = attackInput.getText().toString();
+                int attackInputInt= Integer.parseInt(attackInputString);
                 String defenseInputString = defenseInput.getText().toString();
+                int defenseInputInt= Integer.parseInt(defenseInputString);
+
 
                 Log.i("LAUREN", nationalNumberInputString);
 
+                boolean isNum= pokedex.isNumber(nationalNumberInputInt);
+                if (isNum ){
+                    Toast.makeText(v.getContext(),"hi", Toast.LENGTH_LONG).show();
+                }
+
+
+
 
                 // check if empty
-                if (nationalNumberInputString nameInputString, speciesInputString, heightInputString, weightInputString,
-                hpInputString, attackInputString, defenseInputString != ""){
-
-                }
+                //CURRENTLY DOING
+//                if (nationalNumberInputString nameInputString, speciesInputString, heightInputString, weightInputString,
+//                hpInputString, attackInputString, defenseInputString != ""){
+//
+//                }
 
             }
         }); // end submit on Click listener

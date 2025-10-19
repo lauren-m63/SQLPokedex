@@ -55,17 +55,24 @@ public class Pokedex {
     public void setNumber(int number) {
         this.nationalNumber = number;
     }
+    public boolean isNumber(int number){
+        if (number > 0 && number <1010){
+            return true;
+        }
+        return false;
+    }
 
 
 
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
+    public boolean isName(String name) { //checking if name input is letters only
+        return name.matches("[A-Za-z]+");
+    }
 
 
     public String getSpecies() {
