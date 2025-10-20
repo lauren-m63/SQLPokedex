@@ -67,18 +67,18 @@ public class PokedexMain extends AppCompatActivity {
                     double weightInputDouble = Double.parseDouble(weightInputString);
                 }
 
-                String hpInputString = HPInput.getText().toString();
-                int hpInputInt= Integer.parseInt(hpInputString);
-                String attackInputString = attackInput.getText().toString();
-                int attackInputInt= Integer.parseInt(attackInputString);
-                String defenseInputString = defenseInput.getText().toString();
-                int defenseInputInt= Integer.parseInt(defenseInputString);
+//                String hpInputString = HPInput.getText().toString();
+//                int hpInputInt= Integer.parseInt(hpInputString);
+//                String attackInputString = attackInput.getText().toString();
+//                int attackInputInt= Integer.parseInt(attackInputString);
+//                String defenseInputString = defenseInput.getText().toString();
+//                int defenseInputInt= Integer.parseInt(defenseInputString);
 
 
                 Log.i("LAUREN", nationalNumberInputString);
 
                 boolean isNum= pokedex.isNumber(nationalNumberInputInt);
-                if (isNum ){
+                if (isNum){
                     Toast.makeText(v.getContext(),"hi", Toast.LENGTH_LONG).show();
                 }
 
