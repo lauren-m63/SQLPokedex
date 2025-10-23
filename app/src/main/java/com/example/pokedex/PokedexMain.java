@@ -26,6 +26,19 @@ public class PokedexMain extends AppCompatActivity {
     Button resetButton;
     Pokedex pokedex;
 
+    public boolean emptyString(String string){
+        if (!string.isEmpty()){
+            return true;
+        }
+        return false;
+    }
+    public boolean noneEmpty(Boolean a, Boolean b, Boolean c){
+        if ((a && b && c) == true){
+            return true;
+        }
+        return false;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,9 +71,18 @@ public class PokedexMain extends AppCompatActivity {
                 String nameInputString = nameInput.getText().toString();
                 String speciesInputString = speciesInput.getText().toString();
                 String heightInputString = heightInput.getText().toString();
-                if (!heightInputString.isEmpty()) {
+               //CHECK IF EMPTY
+                boolean a = emptyString(nameInputString);
+                boolean b=  emptyString(speciesInputString);
+                boolean c = emptyString(heightInputString);
+
+                boolean x = noneEmpty(a , b, c);
+                if (x = true){
                     double heightInputDouble = Double.parseDouble(heightInputString);
+                    // then species
+                    // then name
                 }
+
 
                 String weightInputString = weightInput.getText().toString();
                 if (!weightInputString.isEmpty()) {
@@ -83,8 +105,6 @@ public class PokedexMain extends AppCompatActivity {
                 }
 
 
-
-
                 // check if empty
                 //CURRENTLY DOING
 //                if (nationalNumberInputString nameInputString, speciesInputString, heightInputString, weightInputString,
@@ -94,6 +114,7 @@ public class PokedexMain extends AppCompatActivity {
 
             }
         }); // end submit on Click listener
+
 
 
 
@@ -129,6 +150,7 @@ public class PokedexMain extends AppCompatActivity {
 
 
     } // end on create
+
 
 
 
