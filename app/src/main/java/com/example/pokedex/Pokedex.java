@@ -10,7 +10,8 @@ public class Pokedex {
          String gender;
          double height;
          double weight;
-         LinkedList<Integer> level;
+         LinkedList<Integer> levelList;
+         int level;
          int hp;
          int attack;
          int defense;
@@ -18,7 +19,7 @@ public class Pokedex {
 
     public Pokedex(int nationalNumber, String name, String species,
                    String gender, double height, double weight,
-                   LinkedList<Integer> level, int hp, int attack, int defense) {
+                   int level, int hp, int attack, int defense) {
         this.nationalNumber = nationalNumber;
         this.name = name;
         this.species = species;
@@ -40,7 +41,7 @@ public class Pokedex {
          gender = "Other";
          height = 2.2;
          weight = 800.0;
-         level = null;
+         level = 0;
          hp = 0;
          attack= 0;
          defense= 0;
@@ -53,7 +54,9 @@ public class Pokedex {
     }
 
     public void setNumber(int number) {
-        this.nationalNumber = number;
+        if (number > 0 && number <1010) {
+            this.nationalNumber = number;
+        }
     }
     public boolean isNumber(int number){
         if (number > 0 && number <1010){
@@ -68,7 +71,9 @@ public class Pokedex {
         return name;
     }
     public void setName(String name) {
-        this.name = name;
+        if (isName(name)) {
+            this.name = name;
+        }
     }
     public boolean isName(String name) { //checking if name input is letters only
         return name.matches("[A-Za-z]+");
@@ -80,7 +85,9 @@ public class Pokedex {
     }
 
     public void setSpecies(String species) {
-        this.species = species;
+        if (isName(species)){
+            this.species = species;
+        }
     }
 
 
@@ -103,8 +110,6 @@ public class Pokedex {
         this.height = height;
     }
 
-
-
     public double getWeight() {
         return weight;
     }
@@ -114,11 +119,11 @@ public class Pokedex {
     }
 
 
-    public LinkedList<Integer> getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(LinkedList<Integer> level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
@@ -130,8 +135,6 @@ public class Pokedex {
         this.hp = hp;
     }
 
-
-
     public int getAttack() {
         return attack;
     }
@@ -139,8 +142,6 @@ public class Pokedex {
     public void setAttack(int attack) {
         this.attack = attack;
     }
-
-
 
     public int getDefense() {
         return defense;

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,6 +20,7 @@ public class PokedexMain extends AppCompatActivity {
    int genderInput;
     EditText heightInput;
     EditText weightInput;
+    Spinner levelInput;
     EditText HPInput;
     EditText attackInput;
     EditText defenseInput;
@@ -32,12 +34,16 @@ public class PokedexMain extends AppCompatActivity {
         }
         return false;
     }
-    public boolean noneEmpty(Boolean a, Boolean b, Boolean c){
-        if ((a && b && c) == true){
-            return true;
+
+    boolean allFieldsFilled(EditText... fields) {
+        for (EditText field : fields) {
+            if (field.getText().toString().trim().isEmpty()) {
+                return false;
+            }
         }
-        return false;
+        return true;
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,64 +59,57 @@ public class PokedexMain extends AppCompatActivity {
         HPInput = findViewById(R.id.HPInput);
         attackInput = findViewById(R.id.attackInput);
         defenseInput = findViewById(R.id.defenseInput);
-        //levelInput hi
+        levelInput = findViewById(R.id.levelSpinner);
        //genderInput = findViewById(genderInput);
         submitButton  = findViewById(R.id.submitButton);
         resetButton = findViewById(R.id.resetButton);
 
 
 
-
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nationalNumberInputString = nationalNumberInput.getText().toString();
 
-                int nationalNumberInputInt= Integer.parseInt(nationalNumberInputString);
-
-                String nameInputString = nameInput.getText().toString();
-                String speciesInputString = speciesInput.getText().toString();
-                String heightInputString = heightInput.getText().toString();
-               //CHECK IF EMPTY
-                boolean a = emptyString(nameInputString);
-                boolean b=  emptyString(speciesInputString);
-                boolean c = emptyString(heightInputString);
-
-                boolean x = noneEmpty(a , b, c);
-                if (x = true){
-                    double heightInputDouble = Double.parseDouble(heightInputString);
-                    // then species
-                    // then name
+                //checking if fields are empty
+                if (!allFieldsFilled(
+                        nationalNumberInput,
+                        nameInput,
+                        speciesInput,
+                        heightInput,
+                        weightInput,
+                        HPInput,
+                        attackInput,
+                        defenseInput
+                )) {
+                    Toast.makeText(v.getContext(), "Please fill out all fields.", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+                if (allFieldsFilled()){
+                    String nationalNumberInputString = nationalNumberInput.getText().toString();
+                        int nationalNumberInputInt= Integer.parseInt(nationalNumberInputString);
+                    String nameInputString = nameInput.getText().toString();
+                    String speciesInputString = speciesInput.getText().toString();
+                    String heightInputString = heightInput.getText().toString();
+                        double heightInputDouble = Double.parseDouble(heightInputString);
+                    String weightInputString = weightInput.getText().toString();
+                        double weightInputDouble = Double.parseDouble(weightInputString);
+
+                    String hpStringInput = HPInput.getText().toString();
+                        int hpInputInt= Integer.parseInt(hpStringInput);
+                    String attackInputString = attackInput.getText().toString();
+                        int attackInputInt= Integer.parseInt(attackInputString);
+                    String defenseInputString = defenseInput.getText().toString();
+                        int defenseInputInt= Integer.parseInt(defenseInputString);
+
+                    Log.i("Lauren", hpStringInput + hpInputInt);
+
+                    String fixIt = "";
+                    Toast.makeText(v.getContext(), "The following fields are not within bounds: " + fixIt, Toast.LENGTH_LONG ).show();
 
 
-                String weightInputString = weightInput.getText().toString();
-                if (!weightInputString.isEmpty()) {
-                    double weightInputDouble = Double.parseDouble(weightInputString);
-                }
-
-//                String hpInputString = HPInput.getText().toString();
-//                int hpInputInt= Integer.parseInt(hpInputString);
-//                String attackInputString = attackInput.getText().toString();
-//                int attackInputInt= Integer.parseInt(attackInputString);
-//                String defenseInputString = defenseInput.getText().toString();
-//                int defenseInputInt= Integer.parseInt(defenseInputString);
+                }// end if statement
 
 
-                Log.i("LAUREN", nationalNumberInputString);
-
-                boolean isNum= pokedex.isNumber(nationalNumberInputInt);
-                if (isNum){
-                    Toast.makeText(v.getContext(),"hi", Toast.LENGTH_LONG).show();
-                }
-
-
-                // check if empty
-                //CURRENTLY DOING
-//                if (nationalNumberInputString nameInputString, speciesInputString, heightInputString, weightInputString,
-//                hpInputString, attackInputString, defenseInputString != ""){
-//
-//                }
 
             }
         }); // end submit on Click listener
@@ -155,16 +154,3 @@ public class PokedexMain extends AppCompatActivity {
 
 
 } // end class
-
-
-//
-//old
-//int number = Integer.parseInt(nationalNumberInput.getText().toString());
-//                String name = nameInput.getText().toString();
-//                String species = speciesInput.getText().toString();
-//                double height = Double.parseDouble(heightInput.getText().toString());
-//                double weight = Double.parseDouble(weightInput.getText().toString());
-//                //int level = Integer.parseInt(levelSpinner.getSelectedItem().toString());
-//                int hp = Integer.parseInt(HPInput.getText().toString());
-//                int attack = Integer.parseInt(attackInput.getText().toString());
-//                int defense = Integer.parseInt(defenseInput.getText().toString());
