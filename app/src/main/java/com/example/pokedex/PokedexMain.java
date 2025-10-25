@@ -23,7 +23,7 @@ public class PokedexMain extends AppCompatActivity {
    int genderInput;
     EditText heightInput;
     EditText weightInput;
-    Spinner levelInput;
+    Spinner levelSpinner;
     EditText HPInput;
     EditText attackInput;
     EditText defenseInput;
@@ -53,13 +53,7 @@ public class PokedexMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.table); // Make sure res/layout/layout.xml exists
-
-        LinkedList<String> levels = new LinkedList<>();
-        for (int i = 1; i <= 50; i++) {
-            levels.add(String.valueOf(i));
-        }
-        ArrayAdapter<String> levelsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, levels);
-        levelSpinner.setAdapter(levelsAdapter);
+        pokedex= new Pokedex(this);
 
         nationalNumberInput = findViewById(R.id.nationalNumberInput);
         nameInput = findViewById(R.id.nameInput);
@@ -69,10 +63,18 @@ public class PokedexMain extends AppCompatActivity {
         HPInput = findViewById(R.id.HPInput);
         attackInput = findViewById(R.id.attackInput);
         defenseInput = findViewById(R.id.defenseInput);
-        levelInput = findViewById(R.id.levelSpinner);
+        levelSpinner = findViewById(R.id.levelSpinner);
        //genderInput = findViewById(genderInput);
         submitButton  = findViewById(R.id.submitButton);
         resetButton = findViewById(R.id.resetButton);
+
+        LinkedList<String> levels = new LinkedList<>();
+        for (int i = 1; i <= 50; i++) {
+            levels.add(String.valueOf(i));
+        }
+        ArrayAdapter<String> levelsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, levels);
+        levelsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        levelSpinner.setAdapter(levelsAdapter);
 
 
 
@@ -113,12 +115,24 @@ public class PokedexMain extends AppCompatActivity {
                     String defenseInputString = defenseInput.getText().toString();
                         int defenseInputInt= Integer.parseInt(defenseInputString);
 
-                    Log.i("Lauren", hpStringInput + hpInputInt);
+                    StringBuilder fixIt = new StringBuilder();
 
-                    String fixIt = "";
-                    Toast.makeText(v.getContext(), "The following fields are not within bounds: " + fixIt, Toast.LENGTH_LONG ).show();
+                    if (!pokedex.setNumber(nationalNumberInputInt)) fixIt.append("National Number, ");
+                    if (!pokedex.setName(nameInputString)) fixIt.append("Name, ");
+                    if (!pokedex.setSpecies(speciesInputString)) fixIt.append("Species, ");
+                    if (!pokedex.setHeight(heightInputDouble)) fixIt.append("Height, ");
+                    if (!pokedex.setWeight(weightInputDouble)) fixIt.append("Weight, ");
+                    if (!pokedex.setLevel(selectedLevel)) fixIt.append("Level, ");
+                    if (!pokedex.setHp(hpInputInt)) fixIt.append("HP, ");
+                    if (!pokedex.setAttack(attackInputInt)) fixIt.append("Attack, ");
+                    if (!pokedex.setDefense(defenseInputInt)) fixIt.append("Defense, ");
 
-
+                    if (fixIt.length() > 0) {
+                        fixIt.setLength(fixIt.length() - 2); // remove last comma and space
+                        Toast.makeText(v.getContext(), "The following fields are not within bounds: " + fixIt.toString(), Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(v.getContext(), "Data added successfully", Toast.LENGTH_LONG).show();
+                    }
                 }// end if statement
 
 
