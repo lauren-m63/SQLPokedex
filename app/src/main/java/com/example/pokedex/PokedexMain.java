@@ -3,6 +3,7 @@ package com.example.pokedex;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.LinkedList;
 
 public class PokedexMain extends AppCompatActivity {
 
@@ -50,6 +53,13 @@ public class PokedexMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.table); // Make sure res/layout/layout.xml exists
+
+        LinkedList<String> levels = new LinkedList<>();
+        for (int i = 1; i <= 50; i++) {
+            levels.add(String.valueOf(i));
+        }
+        ArrayAdapter<String> levelsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, levels);
+        levelSpinner.setAdapter(levelsAdapter);
 
         nationalNumberInput = findViewById(R.id.nationalNumberInput);
         nameInput = findViewById(R.id.nameInput);
@@ -94,6 +104,8 @@ public class PokedexMain extends AppCompatActivity {
                     String weightInputString = weightInput.getText().toString();
                         double weightInputDouble = Double.parseDouble(weightInputString);
 
+                    String selectedLevelString = levelSpinner.getSelectedItem().toString();
+                        int selectedLevel = Integer.parseInt(selectedLevelString);
                     String hpStringInput = HPInput.getText().toString();
                         int hpInputInt= Integer.parseInt(hpStringInput);
                     String attackInputString = attackInput.getText().toString();

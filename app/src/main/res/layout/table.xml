@@ -218,8 +218,7 @@
                 android:text="Level" />
 
             <Spinner
-
-                />
+                android:id="@+id/levelSpinner" />
 
         </TableRow>
 
