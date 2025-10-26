@@ -80,7 +80,7 @@ public class Pokedex {
 
     public String getGender() { return gender; }
     public boolean setGender(String gender) {
-        if (gender.equals("Male") || gender.equals("Female")) {
+        if (gender.equals("Male") || gender.equals("Female") || gender.equals("Other")) {
             this.gender = gender;
             return true;
         }
@@ -116,7 +116,7 @@ public class Pokedex {
 
     public int getHp() { return hp; }
     public boolean setHp(int hp) {
-        if (hp >= 1 && hp <= 362) {
+        if (hp >= 0) {
             this.hp = hp;
             return true;
         }
@@ -125,7 +125,7 @@ public class Pokedex {
 
     public int getAttack() { return attack; }
     public boolean setAttack(int attack) {
-        if (attack >= 0 && attack <= 526) {
+        if (attack >= 0) {
             this.attack = attack;
             return true;
         }
@@ -134,7 +134,7 @@ public class Pokedex {
 
     public int getDefense() { return defense; }
     public boolean setDefense(int defense) {
-        if (defense >= 10 && defense <= 614) {
+        if (defense >= 0) {
             this.defense = defense;
             return true;
         }

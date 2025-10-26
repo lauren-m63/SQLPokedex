@@ -117,20 +117,50 @@ public class PokedexMain extends AppCompatActivity {
 
                     StringBuilder fixIt = new StringBuilder();
 
-                    if (!pokedex.setNumber(nationalNumberInputInt)) fixIt.append("National Number, ");
-                    if (!pokedex.setName(nameInputString)) fixIt.append("Name, ");
-                    if (!pokedex.setSpecies(speciesInputString)) fixIt.append("Species, ");
-                    if (!pokedex.setHeight(heightInputDouble)) fixIt.append("Height, ");
-                    if (!pokedex.setWeight(weightInputDouble)) fixIt.append("Weight, ");
-                    if (!pokedex.setLevel(selectedLevel)) fixIt.append("Level, ");
-                    if (!pokedex.setHp(hpInputInt)) fixIt.append("HP, ");
-                    if (!pokedex.setAttack(attackInputInt)) fixIt.append("Attack, ");
-                    if (!pokedex.setDefense(defenseInputInt)) fixIt.append("Defense, ");
+                    if (!pokedex.setNumber(nationalNumberInputInt)) {
+                        fixIt.append("National Number, ");
+                        nationalNumberInput.setTextColor(getResources().getColor(R.color.red));
+                    }
+                    if (!pokedex.setName(nameInputString)) {
+                        fixIt.append("Name, ");
+                        nameInput.setTextColor(getResources().getColor(R.color.red));
+                    }
+                    if (!pokedex.setSpecies(speciesInputString)) {
+                        fixIt.append("Species, ");
+                        speciesInput.setTextColor(getResources().getColor(R.color.red));
+                    }
+                    if (!pokedex.setHeight(heightInputDouble)) {
+                        fixIt.append("Height, ");
+                        heightInput.setTextColor(getResources().getColor(R.color.red));
+                    }
+                    if (!pokedex.setWeight(weightInputDouble)) {
+                        fixIt.append("Weight, ");
+                        weightInput.setTextColor(getResources().getColor(R.color.red));
+                    }
+                    if (!pokedex.setLevel(selectedLevel)) {
+                        fixIt.append("Level, ");
+                        // Spinner label would need to be handled separately
+                    }
+                    if (!pokedex.setHp(hpInputInt)) {
+                        fixIt.append("HP, ");
+                        HPInput.setTextColor(getResources().getColor(R.color.red));
+                    }
+                    if (!pokedex.setAttack(attackInputInt)) {
+                        fixIt.append("Attack, ");
+                        attackInput.setTextColor(getResources().getColor(R.color.red));
+                    }
+                    if (!pokedex.setDefense(defenseInputInt)) {
+                        fixIt.append("Defense, ");
+                        defenseInput.setTextColor(getResources().getColor(R.color.red));
+                    }
+
 
                     if (fixIt.length() > 0) {
                         fixIt.setLength(fixIt.length() - 2); // remove last comma and space
                         Toast.makeText(v.getContext(), "The following fields are not within bounds: " + fixIt.toString(), Toast.LENGTH_LONG).show();
                     } else {
+                        heightInput.setText(heightInputString + " m");
+                        weightInput.setText(heightInputString + " Kg");
                         Toast.makeText(v.getContext(), "Data added successfully", Toast.LENGTH_LONG).show();
                     }
                 }// end if statement
