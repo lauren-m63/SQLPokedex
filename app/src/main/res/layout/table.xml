@@ -27,9 +27,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
-
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -47,8 +44,6 @@
 
 
         </TableRow>
-
-
 
 
         <!--row 1-->
@@ -129,9 +124,9 @@
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Gender"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="20dp" />
+                android:layout_marginRight="20dp"
+                android:text="Gender" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -217,8 +212,7 @@
                 android:padding="4dp"
                 android:text="Level" />
 
-            <Spinner
-                android:id="@+id/levelSpinner" />
+            <Spinner android:id="@+id/levelSpinner" />
 
         </TableRow>
 
@@ -234,7 +228,7 @@
                 android:layout_marginRight="20dp"
                 android:padding="4dp"
                 android:text="Base Stats"
-                android:textSize="25dp"/>
+                android:textSize="25dp" />
         </TableRow>
 
 
@@ -310,6 +304,19 @@
         </TableRow>
 
 
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <Button
+                android:id="@+id/numberButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/submit" />
+
+        </TableRow>
+
+
         <!--row 12 buttons-->
         <TableRow
             android:layout_width="match_parent"
@@ -319,25 +326,23 @@
                 android:id="@+id/submitButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/submit"
-                />
+                android:text="@string/submit" />
+
             <Button
                 android:id="@+id/resetButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reset"
-                />
-            
+                android:text="Reset" />
+
 
         </TableRow>
-        
-        
+
 
 
 
 
     </TableLayout>
-<!--    end overall table-->
+    <!--    end overall table-->
 
 
 </LinearLayout>

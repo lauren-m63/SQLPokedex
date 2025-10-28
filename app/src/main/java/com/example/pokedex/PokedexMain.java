@@ -1,12 +1,13 @@
 package com.example.pokedex;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -66,7 +67,7 @@ public class PokedexMain extends AppCompatActivity {
         levelSpinner = findViewById(R.id.levelSpinner);
        //genderInput = findViewById(genderInput);
         submitButton  = findViewById(R.id.submitButton);
-        resetButton = findViewById(R.id.resetButton);
+        resetButton = findViewById(R.id.dataButton);
 
         LinkedList<String> levels = new LinkedList<>();
         for (int i = 1; i <= 50; i++) {
@@ -159,9 +160,59 @@ public class PokedexMain extends AppCompatActivity {
                         fixIt.setLength(fixIt.length() - 2); // remove last comma and space
                         Toast.makeText(v.getContext(), "The following fields are not within bounds: " + fixIt.toString(), Toast.LENGTH_LONG).show();
                     } else {
-                        heightInput.setText(heightInputString + " m");
-                        weightInput.setText(heightInputString + " Kg");
-                        Toast.makeText(v.getContext(), "Data added successfully", Toast.LENGTH_LONG).show();
+//                        heightInput.setText(heightInputString + " m");
+//                        weightInput.setText(heightInputString + " Kg"); bug when doing data
+                        Toast.makeText(v.getContext(), "Data passes inspection", Toast.LENGTH_LONG).show();
+
+                        //adding to database upon submit
+
+
+                        //duplicates
+                        Cursor checkCursor = getContentResolver().query(
+                                PokedexContentProvider.CONTENT_URI,
+                                null,
+                                PokedexContentProvider.COL_NATIONALNUMBER + "=?",
+                                new String[]{ String.valueOf(nationalNumberInputInt) },
+                                null
+                        );
+
+                        if (checkCursor != null && checkCursor.getCount() > 0) {
+                            Toast.makeText(v.getContext(), "A Pokémon with this National Number already exists.", Toast.LENGTH_LONG).show();
+                            checkCursor.close();
+                            return; // stop insert
+                        }
+                        if (checkCursor != null) checkCursor.close();
+
+// Insert new Pokémon
+                        ContentValues values = new ContentValues();
+                        values.put(PokedexContentProvider.COL_NATIONALNUMBER, nationalNumberInputInt);
+                        values.put(PokedexContentProvider.COL_NAME, nameInputString);
+                        values.put(PokedexContentProvider.COL_SPECIES, speciesInputString);
+                        values.put(PokedexContentProvider.COL_HEIGHT, heightInputDouble);
+                        values.put(PokedexContentProvider.COL_WEIGHT, weightInputDouble);
+                        values.put(PokedexContentProvider.COL_LEVEL, selectedLevel);
+                        values.put(PokedexContentProvider.COL_HP, hpInputInt);
+                        values.put(PokedexContentProvider.COL_ATTACK, attackInputInt);
+                        values.put(PokedexContentProvider.COL_DEFENSE, defenseInputInt);
+                        values.put(PokedexContentProvider.COL_GENDER, "Unknown");
+
+                        getContentResolver().insert(PokedexContentProvider.CONTENT_URI, values);
+
+
+                        Cursor c = getContentResolver().query(PokedexContentProvider.CONTENT_URI, null, null, null, null);
+                        if (c != null && c.moveToFirst()) {
+                            do {
+                                String message = "";
+                                for (int i = 0; i < c.getColumnCount(); i++) {
+                                    message += c.getString(i) + " ";
+                                }
+                                Log.i("LAUREN", message.trim());
+                            } while (c.moveToNext());
+                            c.close();
+                        }
+
+                        Toast.makeText(v.getContext(), "DONE", Toast.LENGTH_LONG).show();
+
                     }
                 }// end if statement
 
@@ -182,6 +233,23 @@ public class PokedexMain extends AppCompatActivity {
                  // height, weight, 1, hp, attack, defense
         //  );
 
+
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nationalNumberInput.setText("896");
+                nameInput.setText("Glastrier");
+                speciesInput.setText("Wild Horse Pokemon");
+                // gender input
+                heightInput.setText("2.2");
+                weightInput.setText("800.0");
+                //level input
+                HPInput.setText("0");
+                attackInput.setText("0");
+                defenseInput.setText("0");
+
+            }
+        });  // end on click listener
 
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
