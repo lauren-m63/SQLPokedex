@@ -1,6 +1,7 @@
 package com.example.pokedex;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,7 @@ public class PokedexMain extends AppCompatActivity {
     Button submitButton;
     Button resetButton;
     Pokedex pokedex;
+    Button dataButton;
 
     public boolean emptyString(String string){
         if (!string.isEmpty()){
@@ -67,7 +69,9 @@ public class PokedexMain extends AppCompatActivity {
         levelSpinner = findViewById(R.id.levelSpinner);
        //genderInput = findViewById(genderInput);
         submitButton  = findViewById(R.id.submitButton);
-        resetButton = findViewById(R.id.dataButton);
+        resetButton = findViewById(R.id.resetButton);
+        dataButton = findViewById(R.id.numberButton);
+
 
         LinkedList<String> levels = new LinkedList<>();
         for (int i = 1; i <= 50; i++) {
@@ -251,19 +255,11 @@ public class PokedexMain extends AppCompatActivity {
             }
         });  // end on click listener
 
-        resetButton.setOnClickListener(new View.OnClickListener() {
+        dataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nationalNumberInput.setText("896");
-                nameInput.setText("Glastrier");
-                speciesInput.setText("Wild Horse Pokemon");
-                // gender input
-                heightInput.setText("2.2");
-                weightInput.setText("800.0");
-                //level input
-                HPInput.setText("0");
-                attackInput.setText("0");
-                defenseInput.setText("0");
+             Intent intent = new Intent(v.getContext(), DatabaseView.class);
+             startActivity(intent);
 
             }
         });  // end on click listener

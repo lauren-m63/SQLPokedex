@@ -17,6 +17,8 @@
             android:enabled="true"
             android:exported="true"></provider>
         <!-- 👇 Add this activity -->
+
+        <activity android:name=".DatabaseView" />
         <activity
             android:name=".PokedexMain"
             android:exported="true">

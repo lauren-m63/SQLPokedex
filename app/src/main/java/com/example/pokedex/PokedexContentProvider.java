@@ -25,7 +25,7 @@ public class PokedexContentProvider extends ContentProvider {
     MainDatabaseHelper mHelper;
 
     public final static String SQL_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
-                    "_ID INTEGER PRIMARY KEY, " +
+                    "_id INTEGER PRIMARY KEY, " +
                     COL_NATIONALNUMBER + " INTEGER, " +
                     COL_NAME + " TEXT, " +
                     COL_SPECIES + " TEXT, " +
