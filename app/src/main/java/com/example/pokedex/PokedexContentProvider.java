@@ -62,11 +62,13 @@ public class PokedexContentProvider extends ContentProvider {
     public PokedexContentProvider() {
     }
 
+
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        // Implement this to handle requests to delete one or more rows.
-        throw new UnsupportedOperationException("Not yet implemented");
+        return mHelper.getWritableDatabase().delete(TABLE_NAME, selection, selectionArgs);
     }
+
+
     @Override
     public String getType(Uri uri) {
 

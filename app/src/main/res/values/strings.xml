@@ -16,4 +16,5 @@
     <string name="species">Species</string>
     <string name="pokemon_app">Pokemon App</string>
     <string name="view_data">View Data</string>
+    <string name="to_delete_press_and_hold_on_which_you_want_to_delete">To delete press and hold on which you want to delete</string>
 </resources>

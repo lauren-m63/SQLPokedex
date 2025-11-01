@@ -27,7 +27,7 @@ public class DatabaseView extends AppCompatActivity {
         Cursor cursor = getContentResolver().query(
                 PokedexContentProvider.CONTENT_URI,
                 new String[]{
-                        "_ID", // required for SimpleCursorAdapter
+                        "_ID", // required for SimpleCursorAdapter ????
                         PokedexContentProvider.COL_NATIONALNUMBER,
                         PokedexContentProvider.COL_NAME,
                         PokedexContentProvider.COL_SPECIES,
@@ -52,6 +52,7 @@ public class DatabaseView extends AppCompatActivity {
                 R.id.tvSpecies,
                 R.id.tvHP
         };
+        // erm
 
         adapter = new SimpleCursorAdapter(
                 this,
@@ -64,7 +65,9 @@ public class DatabaseView extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
-        // Optional: delete on long press
+        // optional to delete on long pressw wait
+        // ayyy
+        // this works
         listView.setOnItemLongClickListener((parent, view, position, id) -> {
             // Delete row by _id
             getContentResolver().delete(

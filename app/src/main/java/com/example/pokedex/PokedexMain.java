@@ -160,9 +160,13 @@ public class PokedexMain extends AppCompatActivity {
                     }
 
 
+
                     if (fixIt.length() > 0) {
                         fixIt.setLength(fixIt.length() - 2); // remove last comma and space
                         Toast.makeText(v.getContext(), "The following fields are not within bounds: " + fixIt.toString(), Toast.LENGTH_LONG).show();
+                    // toast and then im leaving it red but it also says what is wrong with it so its user friendl
+                        // in ONE toast and not a million - user friendly yo
+
                     } else {
 //                        heightInput.setText(heightInputString + " m");
 //                        weightInput.setText(heightInputString + " Kg"); bug when doing data
