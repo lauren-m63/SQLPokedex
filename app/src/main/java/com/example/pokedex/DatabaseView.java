@@ -17,17 +17,17 @@ public class DatabaseView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
         EdgeToEdge.enable(this);
         setContentView(R.layout.data); // make sure data.xml contains a ListView with id "listView"
 
         listView = findViewById(R.id.listView);
-        Intent intent = getIntent();
 
         // Query all rows explicitly including "_id"
         Cursor cursor = getContentResolver().query(
                 PokedexContentProvider.CONTENT_URI,
                 new String[]{
-                        "_id", // required for SimpleCursorAdapter
+                        "_ID", // required for SimpleCursorAdapter
                         PokedexContentProvider.COL_NATIONALNUMBER,
                         PokedexContentProvider.COL_NAME,
                         PokedexContentProvider.COL_SPECIES,
@@ -69,7 +69,7 @@ public class DatabaseView extends AppCompatActivity {
             // Delete row by _id
             getContentResolver().delete(
                     PokedexContentProvider.CONTENT_URI,
-                    "_id=?",
+                    "_ID=?",
                     new String[]{String.valueOf(id)}
             );
 
@@ -77,7 +77,7 @@ public class DatabaseView extends AppCompatActivity {
             Cursor newCursor = getContentResolver().query(
                     PokedexContentProvider.CONTENT_URI,
                     new String[]{
-                            "_id",
+                            "_ID",
                             PokedexContentProvider.COL_NATIONALNUMBER,
                             PokedexContentProvider.COL_NAME,
                             PokedexContentProvider.COL_SPECIES,

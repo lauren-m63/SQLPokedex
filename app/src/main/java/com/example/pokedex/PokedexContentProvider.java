@@ -25,7 +25,7 @@ public class PokedexContentProvider extends ContentProvider {
     MainDatabaseHelper mHelper;
 
     public final static String SQL_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
-                    "_id INTEGER PRIMARY KEY, " +
+                    "_ID INTEGER PRIMARY KEY, " +
                     COL_NATIONALNUMBER + " INTEGER, " +
                     COL_NAME + " TEXT, " +
                     COL_SPECIES + " TEXT, " +
@@ -102,6 +102,23 @@ public class PokedexContentProvider extends ContentProvider {
     @Override
     public Cursor query(Uri uri, String[] projection, String selection,
                         String[] selectionArgs, String sortOrder) {
+
+        if (projection == null) {
+            projection = new String[]{
+                    "_ID as _id",  // alias _ID to _id for adapter
+                    COL_NATIONALNUMBER,
+                    COL_NAME,
+                    COL_SPECIES,
+                    COL_HP
+            };
+        } else {
+            // Alias _ID if included
+            for (int i = 0; i < projection.length; i++) {
+                if (projection[i].equals("_ID")) {
+                    projection[i] = "_ID as _id";
+                }
+            }
+        }
         Cursor c = mHelper.getReadableDatabase().query(TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
         return c;
     }
